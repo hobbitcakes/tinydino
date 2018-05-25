@@ -4,14 +4,28 @@ import json
 
 from flask import Flask, url_for, Response
 
+
+#----------------------
+#   Load Dinosaur info
+#______________________
+
+trilobite = { "name" : "Trilobite", "Kingdom" : "Animalia", "period" : "Cambrian", "discovered" : "1698"}
+
+dinosaurs = [trilobite]
+
+
 app = Flask(__name__)
+
+#--------------------------
+#    Basic testing services
+#__________________________
 
 @app.route('/GetResponse')
 def get_response():
     response = {"ServiceResponse" : "Success!! You have successfully called the GetResponse operation"}
     return json.dumps(response)
 
-@app.route('/GetNextInteger/<integer>')
+@app.route('/GetNextInteger/<int:integer>')
 def get_next_integer(integer):
     next_int = int(integer) + 1
     response = {"ServiceResponse" : next_int}
@@ -21,6 +35,35 @@ def get_next_integer(integer):
 def get_all_caps(notcaps):
     response = {"ServiceResponse" : notcaps.upper()}
     return json.dumps(response)
+
+
+#--------------------
+#    Dinosaurs
+#____________________
+
+@app.route('/version')
+def version():
+    version = {"version" : "trilobite"}
+    return json.dumps(version)
+
+
+@app.route('/<dino>', methods=['GET', 'PUT'])
+def tinydino(dino):
+    '''Return the json for a dinosuar or create a new one'''
+    for dinosaur in dinosaurs:
+        if dino.lower() in dinosaur['name'].lower():
+            return json.dumps(dinosaur)
+
+
+@app.route('/dinosaur', methods=['GET', 'POST'])
+def dinosuar():
+    if request.method == 'GET':
+        'trilobite'
+    elif request.method == 'POST':
+        'Need to do something with this...'
+    return "triolobite"
+
+
 
 
 
