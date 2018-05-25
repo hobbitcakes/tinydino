@@ -6,11 +6,16 @@ from flask import Flask, url_for, Response
 
 app = Flask(__name__)
 
-@app.route('/getresponse')
+@app.route('/GetResponse')
 def get_response():
     response = {"ServiceResponse" : "Success!! You have successfully called the GetResponse operation"}
     return json.dumps(response)
 
+@app.route('/GetNextInteger/<integer>')
+def get_next_integer(integer):
+    next_int = int(integer) + 1
+    response = {"ServiceResponse" : next_int}
+    return json.dumps(response)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
