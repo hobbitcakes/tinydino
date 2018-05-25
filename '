@@ -17,8 +17,9 @@ def get_next_integer(integer):
     response = {"ServiceResponse" : next_int}
     return json.dumps(response)
 
-@app.route('/GetAllCaps/<notcaps>')
-def get_all_caps(notcaps):
+@app.route('/GetAllCaps/notcaps')
+def get_next_integer(notcaps):
+    all_caps = notcaps.upper()
     response = {"ServiceResponse" : notcaps.upper()}
     return json.dumps(response)
 
