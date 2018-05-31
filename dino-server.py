@@ -12,7 +12,7 @@ from flask import Flask, url_for, Response
 trilobite = { "name" : "Trilobite", "Kingdom" : "Animalia", "period" : "Cambrian", "discovered" : "1698"}
 ankylosaurus = { "name" : "Ankylosaurus", "Kingdom" : "Animalia", "period" : "Cretaceous", "discovered" : "1908"}
 
-dinosaurs = [trilobite, ankylosuarus]
+dinosaurs = [trilobite, ankylosaurus]
 
 
 app = Flask(__name__)
