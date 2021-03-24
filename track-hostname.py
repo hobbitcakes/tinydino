@@ -51,7 +51,7 @@ def get_headers():
 
 @app.route('/version')
 def version():
-    version = {"version" : "therizinosaurus"}
+    version = {"version" : "trilobite"}
     return json.dumps(version)
 
 
